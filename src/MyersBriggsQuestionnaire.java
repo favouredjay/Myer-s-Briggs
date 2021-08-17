@@ -66,21 +66,21 @@ static String answer;
     }
     public String sensingOrIntuitive()  {
         int S = 0;
-        int I = 0;
+        int N = 0;
         for (int i = 1; i< questions.length; i+=4){
 
             if(answerToQuestion[i].equalsIgnoreCase("A")){
                 S++;
             }
             else if(answerToQuestion[i].equalsIgnoreCase("B")){
-                I++;
+                N++;
             }
         }
-        if(S > I){
+        if(S > N){
             return "S (Sensing)";
         }
         else
-            return "I (Intuitive)";
+            return "N (Intuitive)";
 
 
     }
@@ -140,6 +140,8 @@ static String answer;
 
         MyersBriggsQuestionnaire questionnaire = new MyersBriggsQuestionnaire();
         questionnaire.choice();
+        for(String i : questionnaire.answerToQuestion)
+            System.out.println(i);
         System.out.println("Your personality test result is: \n" + questionnaire.introvertOrExtrovert() + "\n" + questionnaire.sensingOrIntuitive() + "\n" + questionnaire.thinkingOrFeeling() + "\n" + questionnaire.judgingOrPerceiving());
     }
 }
