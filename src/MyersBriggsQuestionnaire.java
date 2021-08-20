@@ -29,7 +29,7 @@ static String answer;
         };
 
 
-    public  void choice() {
+    public  void choice() throws InvalidInputException {
 
         for (int j = 0; j < answerToQuestion.length; j++) {
             System.out.println(questions[j]);
@@ -43,6 +43,7 @@ static String answer;
             else if( answer.equalsIgnoreCase("B")){
                 answerToQuestion[j] = answer;
             }
+           validateAnswer();
         }
     }
     public String introvertOrExtrovert()  {
@@ -127,7 +128,7 @@ static String answer;
         for (int j = 0; j < answerToQuestion.length ; j++) {
 
 
-        if  (!answer.equalsIgnoreCase("A")|| !answer.equalsIgnoreCase("B") ){
+        if  (!(answer.equalsIgnoreCase("A")|| answer.equalsIgnoreCase("B")) ){
             throw new InvalidInputException("options are a or b, try again");
         }
 
@@ -137,11 +138,14 @@ static String answer;
 
 
     public static void main(String[] args) throws InvalidInputException {
-
-        MyersBriggsQuestionnaire questionnaire = new MyersBriggsQuestionnaire();
-        questionnaire.choice();
-        for(String i : questionnaire.answerToQuestion)
-            System.out.println(i);
-        System.out.println("Your personality test result is: \n" + questionnaire.introvertOrExtrovert() + "\n" + questionnaire.sensingOrIntuitive() + "\n" + questionnaire.thinkingOrFeeling() + "\n" + questionnaire.judgingOrPerceiving());
+        try {
+            MyersBriggsQuestionnaire questionnaire = new MyersBriggsQuestionnaire();
+            questionnaire.choice();
+            for (String i : questionnaire.answerToQuestion)
+                System.out.println(i);
+            System.out.println("Your personality test result is: \n" + questionnaire.introvertOrExtrovert() + "\n" + questionnaire.sensingOrIntuitive() + "\n" + questionnaire.thinkingOrFeeling() + "\n" + questionnaire.judgingOrPerceiving());
+        } catch (InvalidInputException e) {
+            e.printStackTrace();
+        }
     }
 }
