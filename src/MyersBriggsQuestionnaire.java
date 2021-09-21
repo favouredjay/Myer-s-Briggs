@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import Exception.InvalidInputException;
 
 public class MyersBriggsQuestionnaire {
 static Scanner input = new Scanner(System.in);
@@ -6,7 +7,7 @@ static String answer;
 
     String [] answerToQuestion = new String[20];
     String [] questions = {
-                    " 1. a. expend energy, enjoy groups or b. conserve energy, enjoy one-on-one" ,
+                    "1. a. expend energy, enjoy groups or b. conserve energy, enjoy one-on-one" ,
                     "2. a. interpret literally or b. look for meaning and possibilities" ,
                     "3. a. logical, thinking, questioning or b. empathetic, feeling, accommodating" ,
                     "4. a. organized, orderly or b. flexible, adaptable" ,
@@ -34,7 +35,7 @@ static String answer;
         for (int j = 0; j < answerToQuestion.length; j++) {
             System.out.println(questions[j]);
 
-            System.out.println("Enter your answer");
+            System.out.println("Enter your answer: ");
             answer = input.next();
 
             if (answer.equalsIgnoreCase("A") ) {
