@@ -16,9 +16,9 @@ public class MyersBriggsQuestionnaire {
         return question.getQuestions();
     }
 
-    public Questions getQuestion() {
-        return question;
-    }
+//    public Questions getQuestion() {
+//        return question;
+//    }
 
     public void setQuestion(Questions question) {
         this.question = question;
@@ -134,7 +134,7 @@ int B=0;
         for (int j = 0; j < question.getQuestionsAnswers().size() ; j++) {
 
 
-            if  (!(question.getQuestionsAnswers().get(j).equalsIgnoreCase("A")|| question.getQuestionsAnswers().get(j).equalsIgnoreCase("B")) ){
+            if  (!(question.getQuestionsAnswers().get(j).equalsIgnoreCase(question.getOptionA())|| question.getQuestionsAnswers().get(j).equalsIgnoreCase(question.getOptionB())) ){
                 throw new IllegalArgumentException("options are a or b, try again");
             }
 
